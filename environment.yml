@@ -1,0 +1,9 @@
+name: flaskr                                                                                      
+channels:                                                                                         
+  - conda-forge                                                                                   
+  - defaults                                                                                      
+dependencies:                                                                                     
+  - conda-forge::nodejs                                                                           
+  - make                                                                                          
+  - r-base                                                                                        
+  - r-essentials   
