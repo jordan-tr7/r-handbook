@@ -40,10 +40,9 @@ export default {
       open: false,
       pages: [
         {name: "4.1 - Functions", path: "4-1_functions"},
-        {name: "4.2 - Parameters", path: "4-2_parameters"},
-        {name: "4.3 - Scope", path: "4-3_scope"},
-        {name: "4.4 - Return Statements", path: "4-4_return-statements"},
-        {name: "4.5 - Testing Functions", path: "4-5_testing-functions"}
+        {name: "4.2 - Scope", path: "4-2_scope"},
+        {name: "4.3 - Return Statements", path: "4-3_return-statements"},
+        {name: "4.4 - Testing Functions", path: "4-4_testing-functions"}
       ]
     },
     {
