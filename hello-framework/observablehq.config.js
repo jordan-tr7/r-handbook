@@ -39,36 +39,36 @@ export default {
       name: "4 - Functions and Testing",
       open: false,
       pages: [
-        {name: "4.1 - Functions", path: "intro"},
-        {name: "4.2 - Parameters", path: "intro"},
-        {name: "4.3 - Scope", path: "intro"},
-        {name: "4.4 - Return Statements", path: "intro"},
-        {name: "4.5 - Testing Functions", path: "intro"}
+        {name: "4.1 - Functions", path: "4-1_functions"},
+        {name: "4.2 - Parameters", path: "4-2_parameters"},
+        {name: "4.3 - Scope", path: "4-3_scope"},
+        {name: "4.4 - Return Statements", path: "4-4_return-statements"},
+        {name: "4.5 - Testing Functions", path: "4-5_testing-functions"}
       ]
     },
     {
       name: "5 - Loops",
       open: false,
       pages: [
-        {name: "5.1 - While Loops", path: "intro"},
-        {name: "5.2 - For Loops", path: "intro"},
-        {name: "5.3 - Counter Controlled Loops", path: "intro"},
-        {name: "5.4 - Iterating over a List", path: "intro"},
-        {name: "5.5 - Debugging a Loop", path: "intro"}
+        {name: "5.1 - While Loops", path: "5-1_while-loops"},
+        {name: "5.2 - For Loops", path: "5-2_for-loops"},
+        {name: "5.3 - Counter Controlled Loops", path: "5-3_counter-loops"},
+        {name: "5.4 - Iterating over a List", path: "5-4_list-iteration"},
+        {name: "5.5 - Debugging a Loop", path: "5-5_debugging-loops"}
       ]
     }, 
     {
       name: "6 - Libraries and Sourcing R Files",
       open: false,
       pages: [
-        {name: "6.1 - Loading Libraries", path: "intro"}
+        {name: "6.1 - Loading Libraries", path: "6-1_libraries"}
       ]
     },
     {
       name: "7 - Connecting to Data Sources with ODBC",
       open: false,
       pages: [
-        {name: "7.1 - RODBC Library", path: "intro"}
+        {name: "7.1 - RODBC Library", path: "7-1_RODBC"}
       ]
     }
   ],
