@@ -7,7 +7,7 @@ Variables hold various kinds of data that can be accessed, used, and changed thr
 - a data type
 - and a value
 
-If you want people to read your code without hating you, it helps to have informative variable names that are easy to read and follow a consistent casing pattern. For example, here are...
+If you want to write code that doesn't annoy people, it helps to have informative variable names that are easy to read and follow a consistent casing pattern. For example, here are...
 
 Some Good Variable Names:
 - *file_path*
@@ -19,7 +19,7 @@ Some Bad Variable Names:
 - *cns*
 - *a_list_of_all_relevant_claim_numbers_by_region_distinct_v2_q4_edits a_long_time_ago_in_a_galaxy_far_far_away_it_is_a_period_of_civil_war_rebel_spaceships striking_from_a_hidden_base_have_won_their_first_victory_against_the_evil_galactic_empire*
 
-If you want to be really consistent, here are some example [Style Guides for R](https://style.tidyverse.org/).
+If you want more suggestions for styling code, here's a published [Style Guide for R](https://style.tidyverse.org/).
 
 ---
 

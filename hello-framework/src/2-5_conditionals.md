@@ -33,24 +33,51 @@ if (number %% 2 == 0) {
 ...
 ```
 
+It is also possible to chain multiple boolean expressions together within a conditional statement using the and `&` and or `|` operators. 
+
 ---
 
-### Optional Exercise
+### Optional Exercises
 
-1) What does the following Boolean expression return?
+1) Review the following code block. What will `resting_heart_rate` be if `cups_of_tea` is equal to 0, 1, or 2?
+
 ```R
-my_num <- 5
-my_num == 2 | 4 | 6
+cups_of_tea <- # ? #
+resting_heart_rate <- 70
+
+if (cups_of_tea > 0) {
+    resting_heart_rate <- (resting_heart_rate + (cups_of_tea * 10))
+} else {
+    resting_heart_rate <- resting_heart_rate - 5
+}
+
+print(paste("Resting heart rate is currently:", resting_heart_rate, sep = " "))
 ```
 
-**Solution**
+2) What will the following code block print?
 
-It is a bit surprising when this expression returns `TRUE`. Under the hood when R is guessing the types of our expressions, 0 is equivalent to `FALSE`, and any non-zero number evaluates to `TRUE`. With this in mind, there is also an error in our expression, and R effectively evaluates the statement as:
 ```R
-my_num == 2 | TRUE | TRUE
+claimant_age <- 53
+jurisdiction <- "New York"
+injury_cause <- "motor vehicle accident"
+
+if ((claimant_age < 50) & (jurisdiction == "New York") & 
+((injury_cause == "slip, trip, fall") | (injury_cause == "motor vehicle accident"))) {
+    
+    print("Flagged claim.")
+
+} else {
+    
+    print("No flagged claim.")
+
+}
 ```
-Any true value in a logical or returns true, which is why we see our answer, even though our number is not 2, 4, or 6. To fix the expression we can write it as...
-```R
-my_num == 2 | my_num == 4 | my_num == 6
-```
-...which will return `FALSE` as expected.
+
+**Solutions**
+
+1) For each case, the resting heart rate will be:
+- With 0 cups of tea, resting heart rate will be 65. 
+- With 1 cup of tea, resting heart rate will be 80. 
+- With 2 cups of tea, resting heart rate will be 90. 
+
+2) This code block prints "No flagged claim.". Although the jurisdiction is equal to "New York" and the injury cause is either "slip, trip, fall" or "motor vehicle accident", because the claimant's age is > 50, the first of `claimant_age < 50` evaluates to false. 

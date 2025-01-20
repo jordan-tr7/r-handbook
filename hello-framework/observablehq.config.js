@@ -23,53 +23,52 @@ export default {
         {name: "2.3 - Arithmetic Expressions", path: "2-3_expressions"},
         {name: "2.4 - Boolean Expressions", path: "2-4_boolean"},
         {name: "2.5 - Conditional Statements", path: "2-5_conditionals"},
-        {name: "2.6 - Logical Operators", path: "/intro"}, 
-        {name: "2.7 - Tracing and Debugging", path: "/intro"}
+        {name: "2.6 - Tracing and Debugging", path: "2-6_debugging"}
       ]
     },
     {
-      name: "Data Types, Vectors, and Lists",
+      name: "3 - Strings, Vectors, and Lists",
       open: false,
       pages: [
-        {name: "Vectors", path: "/intro"},
-        {name: "Lists", path: "/intro"},
-        {name: "Strings & Mutability of Objects", path: "/intro"}
+        {name: "3.1 - Strings & Mutability of Objects", path: "3-1_strings"},
+        {name: "3.2 - Vectors", path: "3-2_vectors"},
+        {name: "3.3 - Lists", path: "3-3_lists"}
+        ]
+    },
+    {
+      name: "4 - Functions and Testing",
+      open: false,
+      pages: [
+        {name: "4.1 - Functions", path: "intro"},
+        {name: "4.2 - Parameters", path: "intro"},
+        {name: "4.3 - Scope", path: "intro"},
+        {name: "4.4 - Return Statements", path: "intro"},
+        {name: "4.5 - Testing Functions", path: "intro"}
       ]
     },
     {
-      name: "Functions and Testing",
+      name: "5 - Loops",
       open: false,
       pages: [
-        {name: "Functions", path: "/intro"},
-        {name: "Parameters", path: "/intro"},
-        {name: "Scope", path: "/intro"},
-        {name: "Return Statements", path: "/intro"},
-        {name: "Testing Functions", path: "/intro"}
-      ]
-    },
-    {
-      name: "Loops",
-      open: false,
-      pages: [
-        {name: "While Loops", path: "/intro"},
-        {name: "For Loops", path: "/intro"},
-        {name: "Counter Controlled Loops", path: "/intro"},
-        {name: "Iterating over a List", path: "/intro"},
-        {name: "Debugging a Loop", path: "/intro"}
+        {name: "5.1 - While Loops", path: "intro"},
+        {name: "5.2 - For Loops", path: "intro"},
+        {name: "5.3 - Counter Controlled Loops", path: "intro"},
+        {name: "5.4 - Iterating over a List", path: "intro"},
+        {name: "5.5 - Debugging a Loop", path: "intro"}
       ]
     }, 
     {
-      name: "Libraries and Sourcing R Files",
+      name: "6 - Libraries and Sourcing R Files",
       open: false,
       pages: [
-        {name: "Loading Libraries", path: "/intro"}
+        {name: "6.1 - Loading Libraries", path: "intro"}
       ]
     },
     {
-      name: "Connecting to Data Sources with ODBC",
+      name: "7 - Connecting to Data Sources with ODBC",
       open: false,
       pages: [
-        {name: "RODBC Library", path: "/intro"}
+        {name: "7.1 - RODBC Library", path: "intro"}
       ]
     }
   ],
