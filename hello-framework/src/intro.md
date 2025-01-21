@@ -10,6 +10,4 @@ Open-source languages like R and Python can be used for anything from conducting
 
 ---
 
-### Note Re: Computational Thinking
-
-There are many different models and strategies for solving problems. Some involve breaking processes down into smaller and smaller chunks, and others like Object Oriented Programming involve thinking about the objects in your program and what needs to be done with them. 
+*Tristan Jordan, 1/20/25*

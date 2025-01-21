@@ -4,68 +4,190 @@ toc: false
 
 <div class="hero">
   <h1>r-handbook</h1>
-  <h2>Welcome to your new app! Edit&nbsp;<code style="font-size: 90%;">src/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+  <h2>Reference for data analysis and reporting at MEMIC.</h2>
+  <a href="intro">Introduction<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
+```js 
+// getting new les mis data
+const newURL = "https://gist.githubusercontent.com/mbostock/4062045/raw/35f1541d6e814e51eb4b6ddf4d235b4d39012fab/miserables.json";
 
----
+const newData = getData(newURL);
+```
 
-## Next steps
+```js 
+async function getData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
-Here are some ideas of things you could try…
+    const json = await response.json();
+    console.log(json);
+    return json;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  } 
 
-<div class="grid grid-cols-4">
-  <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript#resize(render)"><code>resize</code></a>.
-  </div>
-  <div class="card">
-    Create a <a href="https://observablehq.com/framework/project-structure">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>src</code> folder.
-  </div>
-  <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/inputs/select"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
-  </div>
-  <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
-  </div>
-  <div class="card">
-    Import a <a href="https://observablehq.com/framework/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
-  </div>
-  <div class="card">
-    Ask for help, or share your work or ideas, on our <a href="https://github.com/observablehq/framework/discussions">GitHub discussions</a>.
-  </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
-</div>
+}
+```
+
+```js
+// Copyright 2021-2024 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/force-directed-graph
+function ForceGraph({
+  nodes, // an iterable of node objects (typically [{id}, …])
+  links // an iterable of link objects (typically [{source, target}, …])
+}, {
+  nodeId = d => d.id, // given d in nodes, returns a unique identifier (string)
+  nodeGroup, // given d in nodes, returns an (ordinal) value for color
+  nodeGroups, // an array of ordinal values representing the node groups
+  nodeTitle, // given d in nodes, a title string
+  nodeFill = "currentColor", // node stroke fill (if not using a group color encoding)
+  nodeStroke = "#fff", // node stroke color
+  nodeStrokeWidth = 1.5, // node stroke width, in pixels
+  nodeStrokeOpacity = 1, // node stroke opacity
+  nodeRadius = 5, // node radius, in pixels
+  nodeStrength,
+  linkSource = ({source}) => source, // given d in links, returns a node identifier string
+  linkTarget = ({target}) => target, // given d in links, returns a node identifier string
+  linkStroke = "#999", // link stroke color
+  linkStrokeOpacity = 0.6, // link stroke opacity
+  linkStrokeWidth = 1.5, // given d in links, returns a stroke width in pixels
+  linkStrokeLinecap = "round", // link stroke linecap
+  linkStrength,
+  colors = d3.schemeTableau10, // an array of color strings, for the node groups
+  width = 640, // outer width, in pixels
+  height = 400, // outer height, in pixels
+  invalidation // when this promise resolves, stop the simulation
+} = {}) {
+  // Compute values.
+  const N = d3.map(nodes, nodeId).map(intern);
+  const R = typeof nodeRadius !== "function" ? null : d3.map(nodes, nodeRadius);
+  const LS = d3.map(links, linkSource).map(intern);
+  const LT = d3.map(links, linkTarget).map(intern);
+  if (nodeTitle === undefined) nodeTitle = (_, i) => N[i];
+  const T = nodeTitle == null ? null : d3.map(nodes, nodeTitle);
+  const G = nodeGroup == null ? null : d3.map(nodes, nodeGroup).map(intern);
+  const W = typeof linkStrokeWidth !== "function" ? null : d3.map(links, linkStrokeWidth);
+  const L = typeof linkStroke !== "function" ? null : d3.map(links, linkStroke);
+  
+
+  // Replace the input nodes and links with mutable objects for the simulation.
+  nodes = d3.map(nodes, (_, i) => ({id: N[i]}));
+  links = d3.map(links, (_, i) => ({source: LS[i], target: LT[i]}));
+
+  // Compute default domains.
+  if (G && nodeGroups === undefined) nodeGroups = d3.sort(G);
+
+  // Construct the scales.
+  const color = nodeGroup == null ? null : d3.scaleOrdinal(nodeGroups, colors);
+
+  // Construct the forces.
+  const forceNode = d3.forceManyBody();
+  const forceLink = d3.forceLink(links).id(({index: i}) => N[i]);
+  if (nodeStrength !== undefined) forceNode.strength(nodeStrength);
+  if (linkStrength !== undefined) forceLink.strength(linkStrength);
+
+  const simulation = d3.forceSimulation(nodes)
+      .force("link", forceLink)
+      .force("charge", forceNode)
+      .force("center",  d3.forceCenter())
+      .on("tick", ticked);
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [-width / 2, -height / 2, width, height])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+  const link = svg.append("g")
+      .attr("stroke", typeof linkStroke !== "function" ? linkStroke : null)
+      .attr("stroke-opacity", linkStrokeOpacity)
+      .attr("stroke-width", typeof linkStrokeWidth !== "function" ? linkStrokeWidth : null)
+      .attr("stroke-linecap", linkStrokeLinecap)
+    .selectAll("line")
+    .data(links)
+    .join("line");
+
+  const node = svg.append("g")
+      .attr("fill", nodeFill)
+      .attr("stroke", nodeStroke)
+      .attr("stroke-opacity", nodeStrokeOpacity)
+      .attr("stroke-width", nodeStrokeWidth)
+    .selectAll("circle")
+    .data(nodes)
+    .join("circle")
+      .attr("r", nodeRadius)
+      .call(drag(simulation));
+
+  if (W) link.attr("stroke-width", ({index: i}) => W[i]);
+  if (L) link.attr("stroke", ({index: i}) => L[i]);
+  if (G) node.attr("fill", ({index: i}) => color(G[i]));
+  if (R) node.attr("r", ({index: i}) => R[i]);
+  if (T) node.append("title").text(({index: i}) => T[i]);
+  if (invalidation != null) invalidation.then(() => simulation.stop());
+
+  function intern(value) {
+    return value !== null && typeof value === "object" ? value.valueOf() : value;
+  }
+
+  function ticked() {
+    link
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
+
+    node
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
+  }
+
+  function drag(simulation) {    
+    function dragstarted(event) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
+    }
+    
+    function dragged(event) {
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
+    }
+    
+    function dragended(event) {
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
+    }
+    
+    return d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+  }
+
+  return Object.assign(svg.node(), {scales: {color}});
+}
+```
+
+```js
+const chart = ForceGraph(newData, {
+  nodeId: d => d.id,
+  nodeGroup: d => d.group,
+  nodeTitle: d => `${d.id}\n${d.group}`,
+  linkStrokeWidth: l => Math.sqrt(l.value),
+  width,
+  height: 600,
+  invalidation // a promise to stop the simulation when the cell is re-run
+})
+
+display(chart);
+```
 
 <style>
 

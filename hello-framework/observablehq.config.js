@@ -69,6 +69,14 @@ export default {
       pages: [
         {name: "7.1 - RODBC Library", path: "7-1_RODBC"}
       ]
+    }, 
+    {
+      name: "8 - Storing Data in Tabular Format",
+      open: false, 
+      pages: [
+        {name: "8.1 - Data Frames", path: "8-1_data-frames"},
+        {name: "8.2 - Subsetting Data Frames", path: "8-2_subsetting"}
+      ]
     }
   ],
 
