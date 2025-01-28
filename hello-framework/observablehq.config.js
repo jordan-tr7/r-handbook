@@ -11,7 +11,8 @@ export default {
       name: "1 - Introduction",
       open: false,
       pages: [
-        {name: "1.1 - Introduction", path: "intro"}
+        {name: "1.1 - Introduction", path: "intro"}, 
+        {name: "1.2 - Setup & Prerequisites", path: "r-setup"}
       ]
     }, 
     {
@@ -64,18 +65,20 @@ export default {
       ]
     },
     {
-      name: "7 - Connecting to Data Sources with ODBC",
-      open: false,
-      pages: [
-        {name: "7.1 - RODBC Library", path: "7-1_RODBC"}
-      ]
-    }, 
-    {
-      name: "8 - Storing Data in Tabular Format",
+      name: "7 - Storing Data in Tabular Format",
       open: false, 
       pages: [
-        {name: "8.1 - Data Frames", path: "8-1_data-frames"},
-        {name: "8.2 - Subsetting Data Frames", path: "8-2_subsetting"}
+        {name: "7.1 - Data Frames", path: "7-1_data-frames"},
+        {name: "7.2 - Subsetting Data Frames", path: "7-2_subsetting"},
+        {name: "7.3 - Dplyr Package for Data Transformation", path: "7-3_dplyr"}
+      ]
+    },
+    {
+      name: "8 - Connecting to Data Sources with ODBC",
+      open: false,
+      pages: [
+        {name: "8.1 - RODBC Library", path: "8-1_RODBC"}, 
+        {name: "8.2 - Excel and CSV", path: "8-2_excel-csv"}
       ]
     }
   ],
