@@ -12,7 +12,8 @@ export default {
       open: false,
       pages: [
         {name: "1.1 - Introduction", path: "intro"}, 
-        {name: "1.2 - Setup & Prerequisites", path: "r-setup"}
+        {name: "1.2 - Setup & Prerequisites", path: "r-setup"},
+        {name: "1.3 - A Look at RStudio Desktop", path: "1-3_rstudio"}
       ]
     }, 
     {
@@ -70,16 +71,24 @@ export default {
       pages: [
         {name: "7.1 - Data Frames", path: "7-1_data-frames"},
         {name: "7.2 - Subsetting Data Frames", path: "7-2_subsetting"},
-        {name: "7.3 - Dplyr Package for Data Transformation", path: "7-3_dplyr"}
+        {name: "7.3 - Transforming Data with `dplyr`", path: "7-3_dplyr"}
       ]
     },
     {
-      name: "8 - Connecting to Data Sources with ODBC",
+      name: "8 - Connecting to External Data Sources",
       open: false,
       pages: [
-        {name: "8.1 - RODBC Library", path: "8-1_RODBC"}, 
-        {name: "8.2 - Excel and CSV", path: "8-2_excel-csv"}
+        {name: "8.1 - Creating a Custom ODBC Connection", path: "8-1_ODBC"},
+        {name: "8.2 - RODBC Library", path: "8-2_RODBC"}, 
+        {name: "8.3 - Reading from Excel, CSV, TXT", path: "8-3_excel-csv"},
+        {name: "8.4 - Writing Data Frames to Excel", path: "8-4_df_to_excel"}
       ]
+    }, 
+    {name: "9 - Data Visualization with ggplot2",
+    open: false,
+    pages: [
+      {name: "9.1 - Intro. to the Grammar of Graphics", path: "9-1_grammar_of_graphics"}
+    ]
     }
   ],
 

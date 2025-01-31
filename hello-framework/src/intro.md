@@ -10,4 +10,4 @@ Open-source languages like R and Python can be used for anything from conducting
 
 ---
 
-*Tristan Jordan, 1/20/25*
+*Tristan Jordan, 1/30/2025*
